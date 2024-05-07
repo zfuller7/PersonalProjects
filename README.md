@@ -3,10 +3,10 @@ This repository is a collection of small projects. These projects are meant to d
 
 ## List of Projects
 - Image Recovery. This project demonstrates how image resolution can be improved using SVD and thresholding. 
-   - pdf contains explanation and images
-   - r file with code.
+   - Image Recovery.pdf contains images and explanation.
+   - Image Recovery.R contains code.
 
-- Cirrhosis. These files are focused on Survival Analysis.
-   - rmarkdown file, my prefered way to code in R
-   - basic r file with the same code.
-   - pdf with explanation
+- . Survival Analysis.
+   - survival_cirrhosis.pdf is a print out of the Rmd file.
+   - survival_cirrhosis.Rmd contains the R markdown file.
+   - survival_cirrhosis.R same code as the Rmd, but in a basic R format.
