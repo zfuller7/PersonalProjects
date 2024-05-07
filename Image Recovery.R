@@ -26,13 +26,14 @@ for (i in 1:length(spiral_x)) {
 }
 
 # Display the original spiral image
-image(image, col = gray(seq(0, 1, length = 256)), axes = FALSE)
+image(image, axes = FALSE)
 
 # Add Gaussian noise to the image
+set.seed(1234) #set a seed for reproducibility
 noisy_image <- image + rnorm(length(image), mean = 0, sd = 1)  # Adjust mean and sd as needed
 
 #Display the noisy spiral image. Note that the spiral is barely visible.
-image(noisy_image)
+image(noisy_image, axes=FALSE)
 
 ######################################
 #Process the noisy image to recover the original.
@@ -51,31 +52,25 @@ cumenergy <- cumsum(energy)
 plot(si, cumenergy, main="Cumulative Energy of Singular Values", xlab="Index of Singular Value",
      ylab="Cumulative Energy of Singular Values")
 
+
+#For comparison, use the full SVD for image reconstruction
+full <- svdX$u[,1:300] %*% diag(svdX$d[1:300], 300) %*% t(svdX$v[,1:300])
+image(full, axes=FALSE)
+
 #Capture 90% Energy
 ninety <- which(cumenergy>=0.9)[1]
-u90 <- svdX$u[,1:300] 
-v90 <- svdX$v[,1:300]
-d90 <- svdX$d[1:300]
-M90 <- diag(d90, 300)
+u90 <- svdX$u[,1:ninety] 
+v90 <- svdX$v[,1:ninety]
+d90 <- svdX$d[1:ninety]
+M90 <- diag(d90, ninety)
 image90 <- u90 %*% M90 %*% t(v90)
 
 #Now, plot the image with 90% energy recovery
 image(image90, main = "90% Energy")
 
-
+#calculate error
 (error <- tr(t(image90-image)%*%(image90-image))/300^2) #error is based on frobenious norm.
 
-
-#Alternate approach using davish and donoho with known sigma=1.
-tau <- 4/sqrt(3)*sqrt(300)*1
-tsvd <- which(svdX$d >= tau)
-utsvd <- svdX$u[, 1:2]
-vtsvd <- svdX$v[, 1:2]
-dtsvd <- svdX$d[1:2]
-Mtsvd <- diag(dtsvd, 2)
-imagetsvd <- utsvd %*% Mtsvd %*% t(vtsvd)
-image(imagetsvd, main="tSVD with sigma=1")
-tr(t(imagetsvd-image)%*%(imagetsvd-image))/300^2
 
 #davish and donoho with sigma estimate
 k <- 0.4389
@@ -87,6 +82,21 @@ dsvd4 <- svdX$d[1:4]
 Msvd4 <- diag(dsvd4, 4)
 imagesvd4 <- usvd4 %*% Msvd4 %*% t(vsvd4)
 image(imagesvd4, main="tSVD with unknown sigma")
+
+#caluclate error
 tr(t(imagesvd4-image)%*%(imagesvd4-image))/300^2
 
+#calculate error
+(error <- tr(t(image90-image)%*%(image90-image))/300^2)
 
+
+#just for fun, see what 80% energy looks like.
+eighty <- which(cumenergy>=0.8)[1]
+u80 <- svdX$u[,1:eighty] 
+v80 <- svdX$v[,1:eighty]
+d80 <- svdX$d[1:eighty]
+M80 <- diag(d90, eighty)
+image80 <- u80 %*% M80 %*% t(v80)
+
+#Now, plot the image with 90% energy recovery
+image(image80, main = "80% Energy")
