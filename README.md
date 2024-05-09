@@ -20,6 +20,6 @@ This repository is a collection of small projects. These projects are meant to d
 - Ledoit/Wolf Covariance shrinkage
   - The project I forked this from was written in Python.
   - I developed my R script independently of the python script, but decided not to create a totally new repository.
--Quantile Regression with Splines
+- Quantile Regression with Splines
    - https://github.com/zfuller7/quantreg
    - Shiny App for demonstrating the effect of the smoothing parameter on a spline in Quantile Regression.
