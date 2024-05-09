@@ -1,18 +1,19 @@
-# Personal Projects
+## Personal Projects
 This repository is a collection of small projects. These projects are meant to demonstrate what I can do.
 
 ## List of Projects
-- Image Recovery. This project demonstrates how image resolution can be improved using SVD and thresholding. **Temporarily removed this project while I make improvements.** 
+- Image Compression. This project demonstrates how images can be compressed using SVD and thresholding.  
    - Image Recovery.pdf contains images and explanation.
-   - Image Recovery.R contains code.
+   - Image Recovery.R contains code and custom functions for simplifying the process.
+     -Future project will focus on improving image resolution with "noisy" images.
 
-- . Survival Analysis.
+- Survival Analysis.
    - survival_cirrhosis.pdf is a print out of the Rmd file.
    - survival_cirrhosis.Rmd contains the R markdown file.
    - survival_cirrhosis.R same code as the Rmd, but in a basic R format.
 
 
-# Other Projects
+## Other Projects
 - MMPIO contributions
    - https://github.com/zfuller7/mmpio
    - forked from an existing project and written in GO.
