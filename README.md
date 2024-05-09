@@ -23,3 +23,8 @@ This repository is a collection of small projects. These projects are meant to d
 - Quantile Regression with Splines
    - https://github.com/zfuller7/quantreg
    - Shiny App for demonstrating the effect of the smoothing parameter on a spline in Quantile Regression.
+   - Some updates may be coming soon.
+- Housing Data
+  - https://www.kaggle.com/code/zfuller7/lasso-regression-us-housing-market-analysis
+  - Uses Lasso Regression to analyze US housing data.
+  - I have some updates in mind for this script and may update soon.
